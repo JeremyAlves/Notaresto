@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RestaurantController!{% endblock %}
+
+{% block body %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Liste des restaurants</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>City</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Date d'ajout</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for restaurant in restaurants %}
+                        <td>{{ restaurant.id }}</td>
+                        <td>{{ restaurant.city.id }}</td>
+                        <td>{{ restaurant.name }}</td>
+                        <td>{{ restaurant.description }}</td>
+                        <td>{{ restaurant.createdAt | date("d/m/Y") }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
