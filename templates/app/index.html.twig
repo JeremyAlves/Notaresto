@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Acceuil{% endblock %}
+
+{% block body %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Liste des restaurants</h1>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>City</th>
+                        <th>Nom</th>
+                        <th>Description</th>
+                        <th>Date d'ajout</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        {% for restaurant in restaurants %}
+                        <td>{{ restaurant.id }}</td>
+                        <td>{{ restaurant.city.id }}</td>
+                        <td>{{ restaurant.name }}</td>
+                        <td>{{ restaurant.description }}</td>
+                        <td>{{ restaurant.createdAt | date("d/m/Y") }}</td>
+                        <td>{{ restaurant.name }} (Moyenne de {{ restaurant.averageRating | number_format(2, ',') }})<br>
+                            <small>{{ restaurant.description }}</small></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
