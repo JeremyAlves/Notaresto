@@ -173,16 +173,21 @@ class Restaurant
 
     // Fonction qui fait une moyenne de la note du restaurant
     public function getAverageRating() : float
-{
-
-    $sum = 0;
-    $total = 0;
-
-    foreach($this->getReviews() as $review) {
-        $sum += $review->getRating();
-        $total++;
+    {
+    
+        $sum = 0;
+        $total = 0;
+    
+        foreach($this->getReviews() as $review) {
+            $sum += $review->getRating();
+            $total++;
+        }
+    
+        if ($total > 0) {
+            return $sum/$total;
+        }
+    
+        return 0;
+    
     }
-
-    return $sum/$total;
-}
 }
